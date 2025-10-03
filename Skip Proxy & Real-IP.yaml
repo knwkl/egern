@@ -1,0 +1,40 @@
+# =====================================================
+# name: Skip Proxy & Real-IP
+# desc: 跳过部分应用的代理检测 / 强制返回真实 IP / 屏蔽农行自检
+# =====================================================
+
+rule-set:
+  - name: skip-proxy-and-real-ip
+    type: inline
+    rules:
+      # ===== 屏蔽 =====
+      - domain: msmp.abchina.com.cn
+        reject: true
+
+      # ===== 强制直连（skip-proxy） =====
+      - domain-suffix: baidu.com
+        direct: true
+      - domain-suffix: ccb.com
+        direct: true
+      - domain: wxh.wo.cn
+        direct: true
+      - domain: gate.lagou.com
+        direct: true
+      - domain-suffix: abchina.com.cn
+        direct: true
+      - domain-suffix: shanbay.com
+        direct: true
+      - domain-suffix: mobile-bank.psbc.com
+        direct: true
+      - domain: id6.me
+        direct: true
+
+      # ===== 强制真实 IP（always-real-ip） =====
+      - domain: easy-login.10099.com.cn
+        real-ip: true
+      - domain-suffix: xoyocdn.com
+        real-ip: true
+      - domain: id6.me
+        real-ip: true
+      - domain: open.e.189.cn
+        real-ip: true
